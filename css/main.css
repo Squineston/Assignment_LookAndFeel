@@ -5,34 +5,25 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
     background-color: #0073e6;
     color: white;
+    padding: 1rem;
+    text-align: center;
 }
 
     header .logo img {
         max-height: 50px;
+        vertical-align: middle;
     }
 
-    header nav a {
-        color: white;
-        margin: 0 1rem;
-        text-decoration: none;
-    }
-
-        header nav a:hover {
-            text-decoration: underline;
-        }
+nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+}
 
 main {
     padding: 2rem;
-}
-
-#crud-section, #charts-section {
-    margin-bottom: 2rem;
 }
 
 table {
@@ -44,7 +35,7 @@ table {
     table th, table td {
         border: 1px solid #ddd;
         padding: 0.5rem;
-        text-align: left;
+        text-align: center;
     }
 
 button {
@@ -53,5 +44,8 @@ button {
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    border-radius: 3px;
+}
+
+form-container {
+    margin-bottom: 2rem;
 }

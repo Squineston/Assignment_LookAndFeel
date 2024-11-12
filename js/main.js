@@ -1,87 +1,82 @@
-// Hardcoded Products
-let products = [
-    { id: 1, name: "Product 1", price: 10 },
-    { id: 2, name: "Product 2", price: 20 },
-];
+// Product Data
+let products = JSON.parse(localStorage.getItem("products")) || [];
 
-// CRUD Operations
+// Add Product
 function addProduct() {
     const name = document.getElementById("product-name").value;
+    const category = document.getElementById("product-category").value;
     const price = parseFloat(document.getElementById("product-price").value);
+    const stock = parseInt(document.getElementById("product-stock").value);
 
-    if (name && price) {
-        const newProduct = { id: products.length + 1, name, price };
-        products.push(newProduct);
+    if (name && category && !isNaN(price) && !isNaN(stock)) {
+        products.push({ id: Date.now(), name, category, price, stock });
+        localStorage.setItem("products", JSON.stringify(products));
         displayProducts();
+        renderCharts();
     } else {
-        alert("Please enter valid product details.");
+        alert("Please fill in all fields with valid values.");
     }
 }
 
+// Delete Product
 function deleteProduct(id) {
     products = products.filter(product => product.id !== id);
+    localStorage.setItem("products", JSON.stringify(products));
     displayProducts();
+    renderCharts();
 }
 
+// Display Products
 function displayProducts() {
-    const productList = document.getElementById("product-list");
-    productList.innerHTML = "";
+    const productTable = document.querySelector("#product-table tbody");
+    productTable.innerHTML = "";
 
     products.forEach(product => {
         const row = `
             <tr>
                 <td>${product.name}</td>
-                <td>$${product.price.toFixed(2)}</td>
-                <td><button onclick="deleteProduct(${product.id})">Delete</button></td>
+                <td>${product.category}</td>
+                <td>${product.price.toFixed(2)}</td>
+                <td>${product.stock}</td>
+                <td>
+                    <button onclick="deleteProduct(${product.id})">Delete</button>
+                </td>
             </tr>`;
-        productList.innerHTML += row;
+        productTable.innerHTML += row;
     });
 }
 
-// Chart.js Integration
+// Render Charts
 function renderCharts() {
-    const ctxBar = document.getElementById("bar-chart").getContext("2d");
-    const ctxLine = document.getElementById("line-chart").getContext("2d");
-    const ctxPie = document.getElementById("pie-chart").getContext("2d");
+    const categories = [...new Set(products.map(p => p.category))];
+    const categoryCounts = categories.map(
+        cat => products.filter(p => p.category === cat).length
+    );
+    const stockCounts = categories.map(
+        cat => products
+            .filter(p => p.category === cat)
+            .reduce((acc, p) => acc + p.stock, 0)
+    );
 
-    new Chart(ctxBar, {
+    new Chart(document.getElementById("category-chart"), {
         type: "bar",
         data: {
-            labels: products.map(p => p.name),
-            datasets: [{
-                label: "Product Prices",
-                data: products.map(p => p.price),
-                backgroundColor: "rgba(0, 123, 255, 0.6)",
-            }]
+            labels: categories,
+            datasets: [{ label: "Products", data: categoryCounts, backgroundColor: "#0073e6" }]
         }
     });
 
-    new Chart(ctxLine, {
-        type: "line",
-        data: {
-            labels: products.map(p => p.name),
-            datasets: [{
-                label: "Product Prices",
-                data: products.map(p => p.price),
-                borderColor: "rgba(0, 123, 255, 1)",
-                fill: false,
-            }]
-        }
-    });
-
-    new Chart(ctxPie, {
+    new Chart(document.getElementById("stock-chart"), {
         type: "pie",
         data: {
-            labels: products.map(p => p.name),
-            datasets: [{
-                data: products.map(p => p.price),
-                backgroundColor: ["#0073e6", "#e63946", "#2a9d8f", "#f4a261", "#264653"],
-            }]
+            labels: categories,
+            datasets: [{ data: stockCounts, backgroundColor: ["#0073e6", "#e63946", "#2a9d8f"] }]
         }
     });
 }
 
 // Initialize
+document.getElementById("add-product-btn").addEventListener("click", addProduct);
 document.addEventListener("DOMContentLoaded", () => {
     displayProducts();
     renderCharts();
