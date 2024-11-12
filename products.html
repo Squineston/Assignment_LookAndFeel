@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="products.html">Products</a>
+            <a href="sales.html">Sales</a>
+            <a href="reports.html">Reports</a>
+            <a href="about.html">About Us</a>
+        </nav>
+    </header>
+    <main>
+        <section id="manage-products">
+            <h2>Manage Products</h2>
+            <div class="form-container">
+                <input type="text" id="product-name" placeholder="Product Name">
+                <input type="text" id="product-category" placeholder="Category">
+                <input type="number" id="product-price" placeholder="Price">
+                <input type="number" id="product-stock" placeholder="Stock Quantity">
+                <button id="add-product-btn">Add Product</button>
+            </div>
+            <table id="product-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price ($)</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic rows will be added here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="js/products.js" defer></script>
+</body>
+</html>
 

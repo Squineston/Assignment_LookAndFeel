@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Sales</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="products.html">Products</a>
+            <a href="sales.html">Sales</a>
+            <a href="reports.html">Reports</a>
+            <a href="about.html">About Us</a>
+        </nav>
+    </header>
+    <main>
+        <section id="manage-sales">
+            <h2>Record Sales</h2>
+            <div class="form-container">
+                <select id="sale-product">
+                    <option value="" disabled selected>Select Product</option>
+                </select>
+                <input type="number" id="sale-quantity" placeholder="Quantity Sold">
+                <button id="add-sale-btn">Add Sale</button>
+            </div>
+            <table id="sales-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Revenue ($)</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic rows will be added here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="js/sales.js" defer></script>
+</body>
+</html>
 

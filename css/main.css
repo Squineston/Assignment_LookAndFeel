@@ -1,51 +1,131 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
+/* Header Styles */
 header {
     background-color: #0073e6;
     color: white;
     padding: 1rem;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-    header .logo img {
-        max-height: 50px;
-        vertical-align: middle;
+    header .logo {
+        display: flex;
+        align-items: center;
     }
 
-nav a {
-    color: white;
-    margin: 0 1rem;
-    text-decoration: none;
-}
+        header .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
 
+    header nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+    }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+/* Main Content */
 main {
     padding: 2rem;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
+/* Form Container */
+.form-container {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-    table th, table td {
-        border: 1px solid #ddd;
-        padding: 0.5rem;
-        text-align: center;
+    .form-container input, .form-container button, .form-container select {
+        padding: 10px;
+        font-size: 1rem;
     }
 
 button {
     background-color: #0073e6;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
     cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
-form-container {
-    margin-bottom: 2rem;
+    button:hover {
+        background-color: #005bb5;
+    }
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    table th, table td {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 10px;
+    }
+
+    table th {
+        background-color: #f4f4f4;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+/* Metrics Section */
+.metrics {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.metric {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+    .metric h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        color: #0073e6;
+    }
+
+/* Chart Section */
+canvas {
+    max-width: 100%;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+    }
+
+    .metrics {
+        flex-direction: column;
+    }
 }
