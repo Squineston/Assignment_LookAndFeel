@@ -119,6 +119,31 @@ canvas {
     display: block;
 }
 
+/* About Us Page Styles */
+.about-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.about-image {
+    width: 150px; /* Adjust width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners */
+    margin: 10px; /* Spacing */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a slight shadow */
+}
+
+.about-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .form-container {
@@ -127,5 +152,14 @@ canvas {
 
     .metrics {
         flex-direction: column;
+    }
+
+    .about-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-image {
+        width: 100px; /* Smaller images for smaller screens */
     }
 }
