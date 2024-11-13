@@ -19,11 +19,23 @@
     <main>
         <section id="reports-section">
             <h2>Sales Insights</h2>
-            <canvas id="sales-trends-chart"></canvas>
-            <canvas id="top-products-chart"></canvas>
+            <div class="chart-container">
+                <h3>Revenue Trends Over Time</h3>
+                <canvas id="sales-trends-chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Top-Selling Products</h3>
+                <canvas id="top-products-chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Stock Distribution by Category</h3>
+                <canvas id="stock-distribution-chart"></canvas>
+            </div>
         </section>
     </main>
-    <script src="js/main.js" defer></script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Reports Logic -->
+    <script src="js/reports.js" defer></script>
 </body>
 </html>
-
